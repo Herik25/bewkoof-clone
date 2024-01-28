@@ -1,0 +1,163 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/products",
+            "dest": "index.html"
+        },
+        {
+            "src": "/users",
+            "dest": "index.html"
+        },
+        {
+            "src": "/auth",
+            "dest": "index.html"
+        },
+        {
+            "src": "/cart",
+            "dest": "index.html"
+        },
+        {
+            "src": "/orders",
+            "dest": "index.html"
+        },
+        {
+            "src": "/products/(.*)",
+            "dest": "index.html"
+        },
+        {
+            "src": "/users/(.*)",
+            "dest": "index.html"
+        },
+        {
+            "src": "/auth/(.*)",
+            "dest": "index.html"
+        },
+        {
+            "src": "/cart/(.*)",
+            "dest": "index.html"
+        },
+        {
+            "src": "/orders/(.*)",
+            "dest": "index.html"
+        },
+        {
+            "src": "/create-payment-intent",
+            "dest": "index.html"
+        },
+        {
+            "src": "/webhook",
+            "dest": "index.html"
+        },
+        {
+            "src": "/admin",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/admin/(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/productdetail",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/productdetail/(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/all-products",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/all-products/(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/login",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/login/(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/signup",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/signup/(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/user-cart",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/user-cart(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/checkout",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/checkout/(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/myaddresses",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/ordersuccess/(.*)",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/ordersuccess",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/myorders",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/myaccount",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/myprofile",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/men-products",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/women-products",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/aboutus",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/privacy-policy",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/terms",
+            "dest": "build/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "build/$1"
+        }
+    ]
+}
