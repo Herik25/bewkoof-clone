@@ -60,103 +60,103 @@
         },
         {
             "src": "/admin",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/admin/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/productdetail",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/productdetail/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/all-products",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/all-products/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/login",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/login/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/signup",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/signup/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/user-cart",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/user-cart(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/checkout",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/checkout/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/myaddresses",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/ordersuccess/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/ordersuccess",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/myorders",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/myaccount",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/myprofile",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/men-products",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/women-products",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/aboutus",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/privacy-policy",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/terms",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         },
         {
             "src": "/",
@@ -164,7 +164,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "build/$1"
+            "dest": "build/index.html"
         }
     ],
     "rewrites": [
