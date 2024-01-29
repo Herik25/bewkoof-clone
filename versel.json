@@ -16,7 +16,19 @@
             "dest": "index.html"
         },
         {
+            "src": "/users/own",
+            "dest": "index.html"
+        },
+        {
             "src": "/auth",
+            "dest": "index.html"
+        },
+        {
+            "src": "/auth/login",
+            "dest": "index.html"
+        },
+        {
+            "src": "/auth/check",
             "dest": "index.html"
         },
         {
