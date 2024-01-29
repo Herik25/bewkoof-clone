@@ -1,3 +1,10 @@
+[build.environment]
+  MONGODB_URL = "mongodb+srv://harshparmar87990:JYATdb2Fl0M4WfiQ@cluster0.ieggfdd.mongodb.net/test?retryWrites=true&w=majority"
+  WEBHOOK_kEY = "whsec_cc2b205b13ef402e59c01daf34bba1d4c38d29938f3d4fcff1c09b654d479259"
+  STRIPE_SECRET_KEY = "sk_test_51N7ZW3SIQQqAiVpLoLnU4e7eBQww7Pnx6yhp4ssBdl5aal9dJ9sTMxgox4MjCdKa1gEx7MONSDEQnryZhG1WRmv900KBrz85I3"
+  SESSION_KEY = "secret_key"
+  DB_PASSWORD = "JYATdb2Fl0M4WfiQ"
+
 [build]
 command = "npm run build"
 publish = "/dist"
