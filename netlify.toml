@@ -6,3 +6,4 @@ status = 200
 [[redirects]]
   from = "/login"
   to = "/"
+  status = 200
