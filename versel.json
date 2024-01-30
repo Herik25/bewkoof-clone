@@ -1,7 +1,7 @@
 {
     "dists": [
         {
-            "src": "index.js",
+            "src": "./index.js",
             "use": "@vercel/node"
         },
         {
@@ -12,51 +12,51 @@
     "routes": [
         {
             "src": "/products",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/users",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/auth",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/cart",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/orders",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/products/(.*)",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/users/(.*)",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/auth/(.*)",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/cart/(.*)",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/orders/(.*)",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/create-payment-intent",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/webhook",
-            "dest": "index.js"
+            "dest": "./index.js"
         },
         {
             "src": "/admin",
