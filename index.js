@@ -172,7 +172,7 @@ server.use(cors());
 server.use(express.json());
 server.use("/products", productRouter.router);
 server.use("/users", isAuth, userRouter.router); //used isAuth to make this routes protected routes
-server.use("/", authRouter.router);
+server.use("/auth", authRouter.router);
 server.use("/cart", isAuth, cartRouter.router);
 server.use("/orders", isAuth, orderRouter.router);
 
