@@ -204,6 +204,9 @@ server.post("/create-payment-intent", async (req, res) => {
   });
 });
 
+server.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 
 main().catch((err) => console.log(err));
