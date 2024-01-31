@@ -6,7 +6,7 @@ const orderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User", require: true },
   totalPrice: { type: Number },
   paymentMethod: { type: String },
-  status: { type: String , default: 'pending'},
+  paymenStatus: { type: String , default: 'pending'},
   orderDate: {type: String},
   deliveryDate: {type: String},
 });

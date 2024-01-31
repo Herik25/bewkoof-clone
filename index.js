@@ -20,12 +20,13 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const secretKey = process.env.SESSION_KEY;
 const cookieParser = require("cookie-parser");
+const { Order } = require('./model/Order');
 
 //web hook visit this website --> https://dashboard.stripe.com/test/webhooks/create to see how to check a webhook
 
 const endpointSecret = process.env.WEBHOOK_kEY;
 
-server.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+server.post('/webhook', express.raw({type: 'application/json'}), async (request, response) => {
   const sig = request.headers['stripe-signature'];
 
   let event;
@@ -41,8 +42,11 @@ server.post('/webhook', express.raw({type: 'application/json'}), (request, respo
   switch (event.type) {
     case 'payment_intent.succeeded':
       const paymentIntentSucceeded = event.data.object;
-      console.log({paymentIntentSucceeded});
-      // Then define and call a function to handle the event payment_intent.succeeded
+      
+      const order = await Order.findById(paymentIntentSucceeded.metadata.orderId)
+      order.paymenStatus = 'recieved'
+      await order.save()
+
       break;
     // ... handle other event types
     default:
@@ -188,7 +192,7 @@ const calculateOrderAmount = (items) => {
 };
 
 server.post("/create-payment-intent", async (req, res) => {
-  const { totalPrice } = req.body;
+  const { totalPrice, orderId } = req.body;
 
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
@@ -197,6 +201,9 @@ server.post("/create-payment-intent", async (req, res) => {
     // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
     automatic_payment_methods: {
       enabled: true,
+    },
+    metadata: {
+      orderId
     },
   });
 
