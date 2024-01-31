@@ -20,13 +20,12 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const secretKey = process.env.SESSION_KEY;
 const cookieParser = require("cookie-parser");
-const { Order } = require('./model/Order');
 
 //web hook visit this website --> https://dashboard.stripe.com/test/webhooks/create to see how to check a webhook
 
 const endpointSecret = process.env.WEBHOOK_kEY;
 
-server.post('/webhook', express.raw({type: 'application/json'}), async (request, response) => {
+server.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
   const sig = request.headers['stripe-signature'];
 
   let event;
@@ -42,11 +41,8 @@ server.post('/webhook', express.raw({type: 'application/json'}), async (request,
   switch (event.type) {
     case 'payment_intent.succeeded':
       const paymentIntentSucceeded = event.data.object;
-      
-      const order = await Order.findById(paymentIntentSucceeded.metadata.orderId)
-      order.paymenStatus = 'recieved'
-      await order.save()
-
+      console.log({paymentIntentSucceeded});
+      // Then define and call a function to handle the event payment_intent.succeeded
       break;
     // ... handle other event types
     default:
