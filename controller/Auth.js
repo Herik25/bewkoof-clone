@@ -1,7 +1,7 @@
 const { User } = require("../model/Users");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-const { sendMail } = require("../services/Mail");
+const { sendMail } = require("../services/mail");
 const secretKey = "SECRET_KEY";
 
 exports.createUser = async (req, res) => {
