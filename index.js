@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const server = express();
@@ -25,33 +25,37 @@ const cookieParser = require("cookie-parser");
 
 const endpointSecret = process.env.WEBHOOK_kEY;
 
-server.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
-  const sig = request.headers['stripe-signature'];
+server.post(
+  "/webhook",
+  express.raw({ type: "application/json" }),
+  (request, response) => {
+    const sig = request.headers["stripe-signature"];
 
-  let event;
+    let event;
 
-  try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-  } catch (err) {
-    response.status(400).send(`Webhook Error: ${err.message}`);
-    return;
+    try {
+      event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    } catch (err) {
+      response.status(400).send(`Webhook Error: ${err.message}`);
+      return;
+    }
+
+    // Handle the event
+    switch (event.type) {
+      case "payment_intent.succeeded":
+        const paymentIntentSucceeded = event.data.object;
+        console.log({ paymentIntentSucceeded });
+        // Then define and call a function to handle the event payment_intent.succeeded
+        break;
+      // ... handle other event types
+      default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
+
+    // Return a 200 response to acknowledge receipt of the event
+    response.send();
   }
-
-  // Handle the event
-  switch (event.type) {
-    case 'payment_intent.succeeded':
-      const paymentIntentSucceeded = event.data.object;
-      console.log({paymentIntentSucceeded});
-      // Then define and call a function to handle the event payment_intent.succeeded
-      break;
-    // ... handle other event types
-    default:
-      console.log(`Unhandled event type ${event.type}`);
-  }
-
-  // Return a 200 response to acknowledge receipt of the event
-  response.send();
-});
+);
 
 //jwt
 const cookieExtractor = function (req) {
@@ -59,17 +63,12 @@ const cookieExtractor = function (req) {
   if (req && req.cookies) {
     token = req.cookies["jwt"];
   }
-  // console.log(token);
-  // token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWQ0MTIzMzk5ZDdkZTA3MGI3MzExMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA1OTg0NjExfQ.mxVPSnaSt4l5vpOuhdGMrbduqgNioqF_gx2uPJRUY5o";
   return token;
 };
 
 const opts = {};
 opts.jwtFromRequest = cookieExtractor;
 opts.secretOrKey = secretKey;
-
-// console.log(opts);
 
 //session
 server.use(express.static(path.join(__dirname, "dist")));
@@ -179,12 +178,10 @@ server.use("/orders", isAuth, orderRouter.router);
 
 // Payment Intent
 
-const stripe = require("stripe")(
-  process.env.STRIPE_SECRET_KEY
-);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const calculateOrderAmount = (items) => {
-  return 1400;// stripe takes last 2 digits as decimal points so 1400 means
+  return 1400; // stripe takes last 2 digits as decimal points so 1400 means
 };
 
 server.post("/create-payment-intent", async (req, res) => {
@@ -192,7 +189,7 @@ server.post("/create-payment-intent", async (req, res) => {
 
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: totalPrice*100,
+    amount: totalPrice * 100,
     currency: "inr",
     // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
     automatic_payment_methods: {
@@ -208,7 +205,6 @@ server.post("/create-payment-intent", async (req, res) => {
 server.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
-
 
 main().catch((err) => console.log(err));
 
